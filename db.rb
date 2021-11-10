@@ -1,6 +1,16 @@
 require 'pg'
 
 conn = PG.connect(dbname: 'task1', user: 'ruby')
+conn.exec('DROP TABLE fixtures;
+    DROP TABLE materials;
+    DROP TABLE rooms;
+    DROP TABLE offices;
+
+    DROP TYPE fixture_type;
+    DROP TYPE material_type;
+    DROP TYPE office_type;
+    DROP TYPE zone_type;
+')
 conn.exec('CREATE TYPE "office_type" AS ENUM (
         \'Office\',
         \'ATM\'
