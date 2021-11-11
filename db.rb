@@ -1,17 +1,17 @@
-require 'pg'
+require_relative('env.rb')
 
-conn = PG.connect(dbname: 'task1', user: 'ruby')
-conn.exec('DROP TABLE fixtures;
-    DROP TABLE materials;
-    DROP TABLE rooms;
-    DROP TABLE offices;
+CONNECTION.exec('DROP TABLE IF EXISTS fixtures;
+    DROP TABLE IF EXISTS materials;
+    DROP TABLE IF EXISTS rooms;
+    DROP TABLE IF EXISTS offices;
 
-    DROP TYPE fixture_type;
-    DROP TYPE material_type;
-    DROP TYPE office_type;
-    DROP TYPE zone_type;
+    DROP TYPE IF EXISTS fixture_type;
+    DROP TYPE IF EXISTS material_type;
+    DROP TYPE IF EXISTS office_type;
+    DROP TYPE IF EXISTS zone_type;
 ')
-conn.exec('CREATE TYPE "office_type" AS ENUM (
+
+CONNECTION.exec('CREATE TYPE "office_type" AS ENUM (
         \'Office\',
         \'ATM\'
     );
@@ -25,7 +25,7 @@ conn.exec('CREATE TYPE "office_type" AS ENUM (
     );
     
     CREATE TYPE "fixture_type" AS ENUM (
-        \'Standingd_desk\',
+        \'Standing_desk\',
         \'Door\',
         \'Window\',
         \'Wall_poster\',
@@ -51,7 +51,7 @@ conn.exec('CREATE TYPE "office_type" AS ENUM (
         "phone" varchar NOT NULL,
         "lob" varchar NOT NULL,
         "type" office_type NOT NULL,
-        PRIMARY KEY ("title", "address")
+        CONSTRAINT title_address PRIMARY KEY ("title", "address")
     );
     
     CREATE TABLE "rooms" (
@@ -60,7 +60,8 @@ conn.exec('CREATE TYPE "office_type" AS ENUM (
         "zone" zone_type NOT NULL,
         "name" varchar NOT NULL,
         "area" int NOT NULL,
-        "max_people" int NOT NULL
+        "max_people" int NOT NULL,
+        CONSTRAINT room_constraint UNIQUE ("office_id", "zone", "name", "area", "max_people")
     );
     
     CREATE TABLE "fixtures" (
