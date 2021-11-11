@@ -5,3 +5,7 @@
 [Database Design Schema](https://dbdiagram.io/d/61852c5cd5d522682dfa5d50):
 
 ![schema](db_schema.png)
+
+
+## Challenge 2
+Script ```db.rb``` drops tables and dattatypes and then creates new. It expects that there is a database named ```task1``` with user ```ruby```.
