@@ -4,7 +4,6 @@ require_relative '../db.rb'
 require_relative 'controllers/Home.rb'
 require_relative 'controllers/Upload.rb'
 require_relative 'controllers/UploadFile.rb'
-require_relative 'controllers/StateReport.rb'
 
 prepareDB()
 use(Rack::Static, :urls => ["/css"], :root => "assets")
