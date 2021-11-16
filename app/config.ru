@@ -4,6 +4,8 @@ require_relative '../db.rb'
 require_relative 'controllers/Home.rb'
 require_relative 'controllers/Upload.rb'
 require_relative 'controllers/UploadFile.rb'
+require_relative 'controllers/StateReport.rb'
+require_relative 'controllers/FixtureReport.rb'
 
 prepareDB()
 use(Rack::Static, :urls => ["/css"], :root => "assets")
@@ -14,6 +16,8 @@ app = Rack::Router.new {
     post '/upload' => UploadFile.new
     get '/reports/states' => StateReport.new
     get '/reports/states/:state' => StateReport.new
+    get '/reports/offices/:id/fixture_types' => FixtureReport.new
+    get '/reports/offices/fixture_types' => FixtureReport.new
 }
 
 run app
