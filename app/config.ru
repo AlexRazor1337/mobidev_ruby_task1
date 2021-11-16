@@ -15,6 +15,7 @@ app = Rack::Router.new {
     post '/upload' => UploadFile.new
     get '/reports/states' => StateReport.new
     get '/reports/states/:state' => StateReport.new
+    get '*' => Home.new
 }
 
 run app
