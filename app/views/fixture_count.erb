@@ -21,12 +21,11 @@
 
     <div class="box"><h3 class="a">Logo</h3><h2 class="b">Fixture Type Count Report</h2></div>
         <%@result.each do |type, office| %>
-            <h2 style="float: right;"><%= @total[type] %></h2>
+            <h4 style="float: right;"><%= @total[type] %></h4>
             <h2><%= type.sub('_', ' ') %></h2>
             
             <table>
                 <%office.each do |data| %>
-                
                     <tr>
                         <td><%= data["title"] %></td>
                         <td><%= data["type"] %></td>

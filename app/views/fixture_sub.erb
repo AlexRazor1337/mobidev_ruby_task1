@@ -22,7 +22,7 @@
     <div class="box"><h3 class="a">Logo</h3><h2 class="b">Fixture Type Subtotal Report</h2></div>
         <h1><%= @office[0]["title"] %></h1>
         <%@result.each do |type, fixture| %>
-            <h2 style="float: right;"><%= fixture.length %></h2>
+            <h4 style="float: right;"><%= fixture.length %></h4>
             <h2><%= type.sub('_', ' ') %></h2>
             
             <table>
