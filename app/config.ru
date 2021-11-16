@@ -20,6 +20,7 @@ app = Rack::Router.new {
     get '/reports/offices/:id/fixture_types' => FixtureReport.new
     get '/reports/offices/fixture_types' => FixtureReport.new
     get '/reports/material_cost' => MaterialCost.new
+    get '*' => Home.new
 }
 
 run app
