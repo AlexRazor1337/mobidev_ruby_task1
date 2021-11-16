@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bahunya.css" />
+</head>
+<body> 
+    <style>
+        .box {
+            display:flex;
+            justify-content:center;
+        }
+
+        .a, .b {
+            margin-right:auto;
+        }
+    </style>
+
+    <div class="box"><h3 class="a">Logo</h3><h2 class="b">Fixture Type Subtotal Report</h2></div>
+        <h1><%= @office[0]["title"] %></h1>
+        <%@result.each do |type, fixture| %>
+            <h2 style="float: right;"><%= fixture.length %></h2>
+            <h2><%= type.sub('_', ' ') %></h2>
+            
+            <table>
+                <%fixture.each do |data| %>
+                    <tr>
+                        <td><%= data["name"] %></td>
+                        <td><%= data["room_name"] %></td>
+                    </tr>
+                <% end %>
+            </table>
+        <% end %>
+</body>
+</html>
