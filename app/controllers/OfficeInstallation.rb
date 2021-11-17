@@ -1,5 +1,4 @@
 require_relative '../../env.rb'
-require 'pp'
 
 class OfficeInstallation
     def view_file filename
@@ -23,6 +22,9 @@ class OfficeInstallation
         @total_max_people = 0
         if env['rack.route_params'][:id]
             @office = CONNECTION.exec("SELECT * FROM offices WHERE id='#{env['rack.route_params'][:id]}'").first
+            if !@office
+                return [404, headers, [render('views/404.erb')]]
+            end
             zones = CONNECTION.exec_params("SELECT DISTINCT zone FROM rooms where office_id = $1;", [env['rack.route_params'][:id]])
             zones.each do |zone|
                 @result[zone['zone']] = {}
@@ -40,7 +42,6 @@ class OfficeInstallation
             end           
         end
         
-        pp @result
         body    = [render('views/installation.erb')]
         
         [status, headers, body]

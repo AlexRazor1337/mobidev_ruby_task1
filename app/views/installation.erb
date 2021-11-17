@@ -31,21 +31,21 @@
     </div></div>
 
     <h2 style="text-align: center;">Installation Instructions</h2>
-        <%@result.each do |zone, rooms| %>
-            <h2><%= zone %></h2>
-            <%rooms.each do |room, materials| %>
-                <h2 style="margin-left: 10vh;"><%= room %></h2>
-                <table style="margin-left: 30vh;">
-                    <%materials.each do |material| %>
-                        <tr>
-                            <td><%= material["m_name"] %></td>
-                            <td><%= material["m_type"] %></td>
-                            <td><%= material["f_name"] %></td>
-                            <td><%= material["f_type"].sub('_', ' ') %></td>
-                        </tr>
-                    <% end %>
-                </table>
-            <% end %>
+    <%@result.each do |zone, rooms| %>
+        <h2><%= zone %></h2>
+        <%rooms.each do |room, materials| %>
+            <h2 style="margin-left: 10vh;"><%= room %></h2>
+            <table style="margin-left: 30vh;">
+                <%materials.each do |material| %>
+                    <tr>
+                        <td><%= material["m_name"] %></td>
+                        <td><%= material["m_type"] %></td>
+                        <td><%= material["f_name"] %></td>
+                        <td><%= material["f_type"].sub('_', ' ') %></td>
+                    </tr>
+                <% end %>
+            </table>
         <% end %>
+    <% end %>
 </body>
 </html>
