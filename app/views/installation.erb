@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation</title>
+    <link rel="stylesheet" href="/css/bahunya.css" />
+</head>
+<body> 
+    <style>
+        .box {
+            display:flex;
+            justify-content:center;
+        }
+
+        .a, .b {
+            margin-right:auto;
+        }
+    </style>
+
+    <div class="box"><h3 class="a">Logo</h3><div class="b">
+        <h2><%= @office['title'] %></h2>
+        <p style="text-align: center;">
+            <%= @office['state'] %>, <%= @office['address'] %>, <%= @office['phone'] %>, <%= @office['type'] %> 
+            <br>
+            <span>Total Area: <%= @total_area %></span>
+            <br>
+            <span>Total max people count: <%= @total_max_people%></span>  
+        </p>
+    </div></div>
+
+    <h2 style="text-align: center;">Installation Instructions</h2>
+        <%@result.each do |zone, rooms| %>
+            <h2><%= zone %></h2>
+            <%rooms.each do |room, materials| %>
+                <h2 style="margin-left: 10vh;"><%= room %></h2>
+                <table style="margin-left: 30vh;">
+                    <%materials.each do |material| %>
+                        <tr>
+                            <td><%= material["m_name"] %></td>
+                            <td><%= material["m_type"] %></td>
+                            <td><%= material["f_name"] %></td>
+                            <td><%= material["f_type"].sub('_', ' ') %></td>
+                        </tr>
+                    <% end %>
+                </table>
+            <% end %>
+        <% end %>
+</body>
+</html>
