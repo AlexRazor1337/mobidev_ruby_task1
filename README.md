@@ -48,3 +48,10 @@ Or you can view individual fixture type count reports per office on `/reports/of
 ## Challenge 6
 You can open Marketing Materials Costs report on `/reports/material_cost`.
 ![image](https://user-images.githubusercontent.com/26604491/142209146-b2c12914-2883-45c0-b6b2-b5a1d85c6d5a.png)
+
+## Challenge 7
+From the *Home* page you can open *Installation Search* page.
+![image](https://user-images.githubusercontent.com/26604491/142245030-aed8ec76-152a-4158-b719-ac572c460793.png)
+From there you can navigate to each office installation insructions.
+![image](https://user-images.githubusercontent.com/26604491/142245365-adadc207-f4ca-418d-abc5-1fd7003a497d.png)
+
