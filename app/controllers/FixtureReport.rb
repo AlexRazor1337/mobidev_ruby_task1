@@ -21,7 +21,10 @@ class FixtureReport
         @count = {}
         @total = {}
         if env['rack.route_params'][:id]
-            @office = CONNECTION.exec("SELECT * FROM offices WHERE id='#{env['rack.route_params'][:id]}'")
+            @office = CONNECTION.exec("SELECT * FROM offices WHERE id='#{env['rack.route_params'][:id]}'").first
+            if !@office
+                return [404, headers, [render('views/404.erb')]]
+            end
             @types = CONNECTION.exec('SELECT DISTINCT type FROM fixtures;')
             @types.each do |type|
                 @rooms = CONNECTION.exec_params("SELECT * FROM rooms where office_id = $1;", [env['rack.route_params'][:id]])
