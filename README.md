@@ -38,3 +38,13 @@ If you open `reports/states` route, it should list all offices in each state in 
 Also you can view individual reports per state via following route:  `reports/states/<STATE_NAME>`.
 
 ![image](https://user-images.githubusercontent.com/26604491/142037650-1234d164-ddbe-4afe-a884-45ae5f279275.png)
+
+## Challenge 5
+If you open `/reports/offices/fixture_types` you will see Fixture Type Count report (how many different Fixture types exist per Office).  
+Or you can view individual fixture type count reports per office on `/reports/offices/<OFFICE_ID>/fixture_types`.
+
+![image](https://user-images.githubusercontent.com/26604491/142208383-1a318f39-5768-48c7-b02b-526f7b4e8560.png)
+
+## Challenge 6
+You can open Marketing Materials Costs report on `/reports/material_cost`.
+![image](https://user-images.githubusercontent.com/26604491/142209146-b2c12914-2883-45c0-b6b2-b5a1d85c6d5a.png)
