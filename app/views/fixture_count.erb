@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture Count</title>
+    <link rel="stylesheet" href="/css/bahunya.css" />
+</head>
+<body> 
+    <style>
+        .box {
+            display:flex;
+            justify-content:center;
+        }
+
+        .a, .b {
+            margin-right:auto;
+        }
+    </style>
+
+    <div class="box"><h3 class="a">Logo</h3><h2 class="b">Fixture Type Count Report</h2></div>
+        <%@result.each do |type, office| %>
+            <h4 style="float: right;"><%= @total[type] %></h4>
+            <h2><%= type.sub('_', ' ') %></h2>
+            
+            <table>
+                <%office.each do |data| %>
+                    <tr>
+                        <td><%= data["title"] %></td>
+                        <td><%= data["type"] %></td>
+                        <td><%= data["address"] %></td>
+                        <td><%= data["lob"] %></td>
+                        <td><%= @count[type][data] %></td>
+                    </tr>
+                <% end %>
+            </table>
+        <% end %>
+</body>
+</html>

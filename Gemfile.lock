@@ -1,0 +1,20 @@
+GEM
+  specs:
+    nio4r (2.5.8)
+    pg (1.2.3)
+    puma (5.5.2)
+      nio4r (~> 2.0)
+    rack (2.2.3)
+    rack-router (0.6.0)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  pg (~> 1.2)
+  puma (~> 5.5)
+  rack (~> 2.2)
+  rack-router (~> 0.6.0)
+
+BUNDLED WITH
+   2.2.22
