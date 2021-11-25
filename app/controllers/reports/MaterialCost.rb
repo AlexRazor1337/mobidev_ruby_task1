@@ -1,21 +1,7 @@
-require_relative '../../env.rb'
+require_relative '../../../env.rb'
 
-class MaterialCost
-    def view_file filename
-        File.read(filename)
-    end
-
-    def render filename
-        ERB.new(view_file(filename)).result(get_binding)
-    end
-
-    def get_binding
-        binding
-    end
-
-    def call(env)
-        status  = 200
-        headers = { "Content-Type" => "text/html" }
+module MaterialCost
+    def generate
         @result = {}
         @total = {}
         CONNECTION.exec('SELECT DISTINCT * FROM offices;').each do |office|
@@ -34,8 +20,6 @@ class MaterialCost
             @result[office['title']] = total_material
         end
 
-        body    = [render('views/material_cost.erb')]
-        
-        [status, headers, body]
+        return true
     end
 end

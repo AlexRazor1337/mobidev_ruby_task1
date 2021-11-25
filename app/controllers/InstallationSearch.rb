@@ -1,25 +1,12 @@
 require_relative '../../env.rb'
+require_relative 'BaseController.rb'
 
-class InstallationSearch
-    def view_file filename
-        File.read(filename)
+class InstallationSearch < BaseController
+    def initialize template
+        super
     end
 
-    def render filename
-        ERB.new(view_file(filename)).result(get_binding)
-    end
-
-    def get_binding
-        binding
-    end
-
-    def call(env)
-        status  = 200
-        headers = { "Content-Type" => "text/html" }
+    def perform env
         @result = CONNECTION.exec('SELECT DISTINCT * FROM offices;')
-        
-        body    = [render('views/installation_search.erb')]
-        
-        [status, headers, body]
     end
 end
